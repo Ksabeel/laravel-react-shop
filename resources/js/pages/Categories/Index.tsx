@@ -1,9 +1,11 @@
 import { Head, Link } from '@inertiajs/react';
 import type { Category } from '@/types';
 import { Pencil, Plus, Trash } from 'lucide-react';
+import { Pagination } from '@/types/pagination';
+import PaginationCategory from '@/components/Pagination';
 
 interface Props {
-    categories: Category[];
+    categories: Pagination<Category>;
 }
 
 export default function CategoriesIndex({ categories }: Props) {
@@ -25,7 +27,7 @@ export default function CategoriesIndex({ categories }: Props) {
                     </Link>
                 </div>
 
-                {categories.length > 0 ? (
+                {categories.data.length > 0 ? (
                     <div className="overflow-x-auto rounded-lg shadow">
                         <table className="min-w-full divide-y divide-gray-200">
                             <thead className="bg-gray-50">
@@ -45,7 +47,7 @@ export default function CategoriesIndex({ categories }: Props) {
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-200">
-                                {categories.map((category) => (
+                                {categories.data.map((category) => (
                                     <tr key={category.id}>
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             {category.id}
@@ -94,6 +96,10 @@ export default function CategoriesIndex({ categories }: Props) {
                                 ))}
                             </tbody>
                         </table>
+
+                        {categories.last_page > 1 && (
+                            <PaginationCategory pagination={categories} />
+                        )}
                     </div>
                 ) : (
                     <div className="rounded-lg bg-black p-6 text-center">
