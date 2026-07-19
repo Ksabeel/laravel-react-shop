@@ -3,6 +3,8 @@ import type { Category } from '@/types';
 import { Pencil, Plus, Trash } from 'lucide-react';
 import { Pagination } from '@/types/pagination';
 import PaginationCategory from '@/components/Pagination';
+import EmptyState from '@/components/EmptyState';
+import PageTitle from '@/components/PagTitle';
 
 interface Props {
     categories: Pagination<Category>;
@@ -15,17 +17,10 @@ export default function CategoriesIndex({ categories }: Props) {
         <>
             <Head title="Categories" />
             <div className="p-6">
-                <div className="mb-6 flex items-center justify-between">
-                    <h1 className="text-3xl font-bold">Categories</h1>
-
-                    <Link
-                        href="/categories/create"
-                        className="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 text-stone-900 hover:bg-stone-100"
-                    >
-                        <Plus className="h-4 w-4" />
-                        Add Category
-                    </Link>
-                </div>
+                <PageTitle heading="Categories" href="/categories/create">
+                    <Plus className="h-4 w-4" />
+                    Add Category
+                </PageTitle>
 
                 {categories.data.length > 0 ? (
                     <div className="overflow-x-auto rounded-lg shadow">
@@ -102,18 +97,13 @@ export default function CategoriesIndex({ categories }: Props) {
                         )}
                     </div>
                 ) : (
-                    <div className="rounded-lg bg-black p-6 text-center">
-                        <p className="mb-4 text-gray-500">
-                            No categories found.
-                        </p>
-                        <Link
-                            href="/categories/create"
-                            className="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 text-stone-900 hover:bg-stone-100"
-                        >
-                            <Plus className="h-4 w-4" />
-                            Add Category
-                        </Link>
-                    </div>
+                    <EmptyState
+                        description="No categories yet"
+                        href="/categories/create"
+                    >
+                        <Plus className="h-4 w-4" />
+                        Add Category
+                    </EmptyState>
                 )}
             </div>
         </>
