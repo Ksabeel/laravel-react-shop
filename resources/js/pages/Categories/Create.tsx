@@ -1,3 +1,5 @@
+import InputField from '@/components/Forms/InputField';
+import TextareaField from '@/components/Forms/TextareaField';
 import { Head, useForm } from '@inertiajs/react';
 import { toast } from 'sonner';
 
@@ -29,53 +31,25 @@ export default function CategoriesCreate() {
                     onSubmit={handleSubmit}
                     className="rounded-lg bg-white p-6 text-stone-900 shadow"
                 >
-                    <div className="mb-4">
-                        <label className="mb-2 block text-sm font-medium">
-                            Category Name *
-                        </label>
-                        <input
-                            type="text"
-                            value={data.name}
-                            onChange={(e) =>
-                                setData('name', e.currentTarget.value)
-                            }
-                            placeholder="Enter category name"
-                            className={`w-full rounded-md border px-3 py-2 ${
-                                errors.name
-                                    ? 'border-red-500 bg-red-50'
-                                    : 'border-gray-300'
-                            }`}
-                        />
-                        {errors.name && (
-                            <p className="mt-1 text-sm text-red-600">
-                                {errors.name}
-                            </p>
-                        )}
-                    </div>
+                    <InputField
+                        label="Category Name *"
+                        type="text"
+                        placeholder="Enter category name"
+                        value={data.name}
+                        onChange={(e) => setData('name', e.currentTarget.value)}
+                        error={errors.name}
+                    />
 
-                    <div className="mb-4">
-                        <label className="mb-2 block text-sm font-medium">
-                            Category Description
-                        </label>
-                        <textarea
-                            value={data.description}
-                            onChange={(e) =>
-                                setData('description', e.currentTarget.value)
-                            }
-                            placeholder="Enter category description"
-                            rows={4}
-                            className={`w-full rounded-md border px-3 py-2 ${
-                                errors.description
-                                    ? 'border-red-500 bg-red-50'
-                                    : 'border-gray-300'
-                            }`}
-                        />
-                        {errors.description && (
-                            <p className="mt-1 text-sm text-red-600">
-                                {errors.description}
-                            </p>
-                        )}
-                    </div>
+                    <TextareaField
+                        label="Category Description"
+                        placeholder="Enter category description"
+                        rows={4}
+                        value={data.description}
+                        onChange={(e) =>
+                            setData('description', e.currentTarget.value)
+                        }
+                        error={errors.description}
+                    />
 
                     <div className="flex gap-4">
                         <button

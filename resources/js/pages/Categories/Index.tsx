@@ -40,16 +40,20 @@ export default function CategoriesIndex({ categories }: Props) {
                                 },
                                 {
                                     header: 'Description',
-                                    render: (category) => category.description ? category.description : 'No description',
+                                    render: (category) =>
+                                        category.description
+                                            ? category.description
+                                            : 'No description',
                                 },
                                 {
                                     header: 'Actions',
                                     render: (product) => (
                                         <div className="flex gap-2">
                                             <EditButton
-                                                href={`/categories/${product.id}`}
+                                                href={`/categories/${product.id}/edit`}
                                             >
-                                                <Pencil className="h-4 w-4" />
+                                                <Pencil className="h-4 w-4" />{' '}
+                                                Edit
                                             </EditButton>
                                             <DeleteButton
                                                 href={`/products/${product.id}`}

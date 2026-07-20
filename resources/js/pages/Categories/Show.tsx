@@ -1,3 +1,5 @@
+import DeleteButton from '@/components/ui/DeleteButton';
+import EditButton from '@/components/ui/EditButton';
 import { Head, Link, usePage } from '@inertiajs/react';
 import { ArrowLeft, Edit, Trash2 } from 'lucide-react';
 // import { CategoryShow } from '@/types';
@@ -37,27 +39,14 @@ export default function CategoriesShow() {
                             </p>
                         </div>
                         <div className="flex gap-2">
-                            <Link
-                                href={`/categories/${cat.id}/edit`}
-                                className="inline-flex items-center gap-2 rounded-md bg-yellow-100 px-4 py-2 text-yellow-800 hover:bg-yellow-200"
-                            >
+                            <EditButton href={`/categories/${cat.id}/edit`}>
                                 <Edit className="h-4 w-4" />
                                 Edit
-                            </Link>
-                            <Link
-                                href={`/categories/${cat.id}`}
-                                method="delete"
-                                as="button"
-                                className="inline-flex items-center gap-2 rounded-md bg-red-100 px-4 py-2 text-red-800 hover:bg-red-200"
-                                onClick={(e) => {
-                                    if (!confirm('Are you sure?')) {
-                                        e.preventDefault();
-                                    }
-                                }}
-                            >
+                            </EditButton>
+                            <DeleteButton href={`/categories/${cat.id}`}>
                                 <Trash2 className="h-4 w-4" />
                                 Delete
-                            </Link>
+                            </DeleteButton>
                         </div>
                     </div>
                     <div className="space-y-4 border-t pt-6">
