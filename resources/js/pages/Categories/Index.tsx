@@ -1,10 +1,13 @@
 import { Head, Link } from '@inertiajs/react';
 import type { Category } from '@/types';
-import { Pencil, Plus, Trash } from 'lucide-react';
+import { Pencil, Plus, Trash2 } from 'lucide-react';
 import { Pagination } from '@/types/pagination';
 import PaginationCategory from '@/components/Pagination';
 import EmptyState from '@/components/EmptyState';
 import PageTitle from '@/components/PagTitle';
+import { Table } from '@/components/Table';
+import EditButton from '@/components/ui/EditButton';
+import DeleteButton from '@/components/ui/DeleteButton';
 
 interface Props {
     categories: Pagination<Category>;
@@ -24,73 +27,41 @@ export default function CategoriesIndex({ categories }: Props) {
 
                 {categories.data.length > 0 ? (
                     <div className="overflow-x-auto rounded-lg shadow">
-                        <table className="min-w-full divide-y divide-gray-200">
-                            <thead className="bg-gray-50">
-                                <tr>
-                                    <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-                                        ID
-                                    </th>
-                                    <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-                                        Name
-                                    </th>
-                                    <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-                                        Description
-                                    </th>
-                                    <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-                                        Actions
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody className="divide-y divide-gray-200">
-                                {categories.data.map((category) => (
-                                    <tr key={category.id}>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            {category.id}
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            {category.name}
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            {category.description
-                                                ? category.description.substring(
-                                                      0,
-                                                      50,
-                                                  ) + '...'
-                                                : 'No description'}
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="flex items-center gap-2">
-                                                <Link
-                                                    href={`/categories/${category.id}/edit`}
-                                                    className="inline-flex items-center gap-1 rounded-md bg-yellow-100 px-3 py-1 text-sm font-medium text-yellow-800 hover:bg-yellow-200"
-                                                >
-                                                    <Pencil className="h-4 w-4" />
-                                                    Edit
-                                                </Link>
-                                                <Link
-                                                    href={`/categories/${category.id}`}
-                                                    method="delete"
-                                                    as="button"
-                                                    onClick={(e) => {
-                                                        if (
-                                                            !confirm(
-                                                                'Are you sure?',
-                                                            )
-                                                        ) {
-                                                            e.preventDefault();
-                                                        }
-                                                    }}
-                                                    className="inline-flex items-center gap-1 rounded-md bg-red-100 px-3 py-1 text-sm font-medium text-red-800 hover:bg-red-200"
-                                                >
-                                                    <Trash className="h-4 w-4" />
-                                                    Delete
-                                                </Link>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                        <Table
+                            data={categories.data}
+                            columns={[
+                                {
+                                    header: 'ID',
+                                    render: (category) => category.id,
+                                },
+                                {
+                                    header: 'Name',
+                                    render: (category) => category.name,
+                                },
+                                {
+                                    header: 'Description',
+                                    render: (category) => category.description ? category.description : 'No description',
+                                },
+                                {
+                                    header: 'Actions',
+                                    render: (product) => (
+                                        <div className="flex gap-2">
+                                            <EditButton
+                                                href={`/categories/${product.id}`}
+                                            >
+                                                <Pencil className="h-4 w-4" />
+                                            </EditButton>
+                                            <DeleteButton
+                                                href={`/products/${product.id}`}
+                                            >
+                                                <Trash2 className="h-4 w-4" />
+                                                Delete
+                                            </DeleteButton>
+                                        </div>
+                                    ),
+                                },
+                            ]}
+                        />
 
                         {categories.last_page > 1 && (
                             <PaginationCategory pagination={categories} />
