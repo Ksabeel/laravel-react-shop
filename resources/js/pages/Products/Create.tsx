@@ -38,7 +38,7 @@ export default function ProductsCreate({ categories }: Props) {
                     className="rounded-lg bg-white p-6 text-stone-900 shadow"
                 >
                     <InputField
-                        label="Product Name *"
+                        label="Product Name"
                         type="text"
                         placeholder="Enter product name"
                         value={data.name}
@@ -58,7 +58,7 @@ export default function ProductsCreate({ categories }: Props) {
                     />
 
                     <InputField
-                        label="Product Price *"
+                        label="Product Price"
                         type="number"
                         step="0.01"
                         placeholder="Enter product price"
@@ -70,7 +70,7 @@ export default function ProductsCreate({ categories }: Props) {
                     />
 
                     <SelectField
-                        label="Category *"
+                        label="Category"
                         value={data.category_id}
                         options={categories}
                         onChange={(e) =>

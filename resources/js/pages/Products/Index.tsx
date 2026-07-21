@@ -1,4 +1,4 @@
-import { Head, Link } from '@inertiajs/react';
+import { Head } from '@inertiajs/react';
 import type { Product } from '@/types';
 import { Pencil, Plus, Trash2 } from 'lucide-react';
 import { Pagination } from '@/types/pagination';

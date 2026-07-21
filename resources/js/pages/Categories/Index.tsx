@@ -1,4 +1,4 @@
-import { Head, Link } from '@inertiajs/react';
+import { Head } from '@inertiajs/react';
 import type { Category } from '@/types';
 import { Pencil, Plus, Trash2 } from 'lucide-react';
 import { Pagination } from '@/types/pagination';
@@ -50,16 +50,16 @@ export default function CategoriesIndex({ categories }: Props) {
                                 },
                                 {
                                     header: 'Actions',
-                                    render: (product) => (
+                                    render: (category) => (
                                         <div className="flex gap-2">
                                             <EditButton
-                                                href={`/categories/${product.id}/edit`}
+                                                href={`/categories/${category.id}/edit`}
                                             >
                                                 <Pencil className="h-4 w-4" />{' '}
                                                 Edit
                                             </EditButton>
                                             <DeleteButton
-                                                href={`/products/${product.id}`}
+                                                href={`/categories/${category.id}`}
                                             >
                                                 <Trash2 className="h-4 w-4" />
                                                 Delete

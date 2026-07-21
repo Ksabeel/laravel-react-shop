@@ -68,7 +68,7 @@ class CategoryController extends Controller
         $category->fill($request->validated());
         $category->save();
 
-        return to_route('categories.index')->with('success', 'Updated Successfully.');
+        return redirect()->route('categories.index')->with('success', 'Product successfully.');
     }
 
     /**
@@ -79,6 +79,6 @@ class CategoryController extends Controller
         // Category::query()->whereKey($category)->delete();
         $category->delete();
 
-        return back()->with('success', 'Deleted Successfully.');
+        return redirect()->route('categories.index')->with('success', 'Category successfully.');
     }
 }

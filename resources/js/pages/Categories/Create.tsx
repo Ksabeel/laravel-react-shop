@@ -24,7 +24,7 @@ export default function CategoriesCreate() {
     return (
         <>
             <Head title="Create Category" />
-            <div className="mx-auto max-w-2xl p-6">
+            <div className="mx-auto w-full max-w-2xl p-6">
                 <h1 className="mb-6 text-3xl font-bold">Create Category</h1>
 
                 <form
@@ -32,7 +32,7 @@ export default function CategoriesCreate() {
                     className="rounded-lg bg-white p-6 text-stone-900 shadow"
                 >
                     <InputField
-                        label="Category Name *"
+                        label="Category Name"
                         type="text"
                         placeholder="Enter category name"
                         value={data.name}

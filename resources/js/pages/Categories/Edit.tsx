@@ -1,39 +1,37 @@
 import InputField from '@/components/Forms/InputField';
 import TextareaField from '@/components/Forms/TextareaField';
-import { Head, useForm, usePage } from '@inertiajs/react';
+import { Category } from '@/types';
+import { Head, useForm } from '@inertiajs/react';
 
-interface Category {
-    id: number;
-    name: string;
-    description: string | null;
+interface Props {
+    category: Category;
 }
 
-export default function EditCategory() {
-    const { category } = usePage().props;
-    const cat = category as Category;
-
+export default function EditCategory({ category }: Props) {
     const { data, setData, put, processing, errors } = useForm({
-        name: cat.name,
-        description: cat.description || '',
+        name: category.name,
+        description: category.description || '',
     });
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        put(`/categories/${cat.id}`);
+        put(`/categories/${category.id}`);
     }
 
     return (
         <>
-            <Head title={`Edit ${cat.name}`} />
-            <div className="mx-auto max-w-2xl p-6">
-                <h1 className="mb-6 text-3xl font-bold">Edit Category</h1>
+            <Head title={`Edit ${category.name}`} />
+            <div className="mx-auto w-full max-w-2xl p-6">
+                <h1 className="mb-6 text-3xl font-bold">
+                    Edit {category.name}
+                </h1>
 
                 <form
                     onSubmit={handleSubmit}
                     className="rounded-lg bg-white p-6 text-black shadow"
                 >
                     <InputField
-                        label="Category Name *"
+                        label="Category Name"
                         value={data.name}
                         onChange={(e) => setData('name', e.currentTarget.value)}
                         error={errors.name}

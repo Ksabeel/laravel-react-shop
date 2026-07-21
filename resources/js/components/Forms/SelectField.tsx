@@ -19,7 +19,7 @@ export default function SelectField({
 }: Props) {
     return (
         <div className="mb-4">
-            <label className="mb-2 block text-sm font-medium">{label}</label>
+            <label className="mb-2 block text-sm font-medium">{label} *</label>
             <select
                 {...props}
                 className={`w-full rounded-md border px-3 py-2 ${
