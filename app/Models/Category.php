@@ -17,13 +17,18 @@ class Category extends Model
     /** @use HasFactory<CategoryFactory> */
     use HasFactory;
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
     public function getFormattedCreatedAtAttribute()
     {
-        return $this->created_at->format('d M Y');
+        return $this->created_at?->format('d M Y');
     }
 
     public function getFormattedUpdatedAtAttribute()
     {
-        return $this->updated_at->format('d M Y');
+        return $this->updated_at?->format('d M Y');
     }
 }

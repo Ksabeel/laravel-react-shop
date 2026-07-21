@@ -1,8 +1,8 @@
 import { Head, Link } from '@inertiajs/react';
-import type { Category } from '@/types';
+import type { Product } from '@/types';
 import { Pencil, Plus, Trash2 } from 'lucide-react';
 import { Pagination } from '@/types/pagination';
-import PaginationCategory from '@/components/Pagination';
+import PaginationProduct from '@/components/Pagination';
 import EmptyState from '@/components/EmptyState';
 import PageTitle from '@/components/PagTitle';
 import { Table } from '@/components/Table';
@@ -10,50 +10,59 @@ import EditButton from '@/components/ui/EditButton';
 import DeleteButton from '@/components/ui/DeleteButton';
 
 interface Props {
-    categories: Pagination<Category>;
+    products: Pagination<Product>;
 }
 
-export default function CategoriesIndex({ categories }: Props) {
-    // console.log(categories);
+export default function ProdctsIndex({ products }: Props) {
+    // console.log(products);
 
     return (
         <>
-            <Head title="Categories" />
+            <Head title="Products" />
             <div className="p-6">
-                <PageTitle heading="Categories" href="/categories/create">
+                <PageTitle heading="Products" href="/products/create">
                     <Plus className="h-4 w-4" />
-                    Add Category
+                    Add Products
                 </PageTitle>
 
-                {categories.data.length > 0 ? (
+                {products.data.length > 0 ? (
                     <div className="overflow-x-auto rounded-lg shadow">
                         <Table
-                            data={categories.data}
+                            data={products.data}
                             columns={[
                                 {
                                     header: 'ID',
-                                    render: (category) => category.id,
+                                    render: (product) => product.id,
                                 },
                                 {
                                     header: 'Name',
-                                    render: (category) => category.name,
+                                    render: (product) => product.name,
                                 },
                                 {
                                     header: 'Description',
-                                    render: (category) =>
-                                        category.description
-                                            ? category.description.substring(
+                                    render: (product) =>
+                                        product.description
+                                            ? product.description.substring(
                                                   0,
                                                   50,
                                               ) + '...'
                                             : 'No description',
                                 },
                                 {
+                                    header: 'Price',
+                                    render: (product) => product.price,
+                                },
+                                {
+                                    header: 'Category',
+                                    render: (product) => product.category.name,
+                                },
+
+                                {
                                     header: 'Actions',
                                     render: (product) => (
                                         <div className="flex gap-2">
                                             <EditButton
-                                                href={`/categories/${product.id}/edit`}
+                                                href={`/products/${product.id}/edit`}
                                             >
                                                 <Pencil className="h-4 w-4" />{' '}
                                                 Edit
@@ -70,17 +79,17 @@ export default function CategoriesIndex({ categories }: Props) {
                             ]}
                         />
 
-                        {categories.last_page > 1 && (
-                            <PaginationCategory pagination={categories} />
+                        {products.last_page > 1 && (
+                            <PaginationProduct pagination={products} />
                         )}
                     </div>
                 ) : (
                     <EmptyState
-                        description="No categories yet"
-                        href="/categories/create"
+                        description="No prodcuts yet"
+                        href="/products/create"
                     >
                         <Plus className="h-4 w-4" />
-                        Add Category
+                        Add Product
                     </EmptyState>
                 )}
             </div>
@@ -88,6 +97,6 @@ export default function CategoriesIndex({ categories }: Props) {
     );
 }
 
-CategoriesIndex.layout = {
-    breadcrumbs: [{ title: 'Categories', href: '/categories' }],
+ProdctsIndex.layout = {
+    breadcrumbs: [{ title: 'Products', href: '/productss' }],
 };
