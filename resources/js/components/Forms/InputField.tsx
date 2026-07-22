@@ -8,7 +8,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 export default function InputField({ label, error, ...props }: Props) {
     return (
         <div className="mb-4">
-            <label className="mb-2 block text-sm font-medium">{label} *</label>
+            <label className="mb-2 block text-sm font-medium">{label}</label>
             <input
                 {...props}
                 className={`w-full rounded-md border px-3 py-2 ${
