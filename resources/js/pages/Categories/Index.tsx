@@ -6,8 +6,8 @@ import PaginationCategory from '@/components/Pagination';
 import EmptyState from '@/components/EmptyState';
 import PageTitle from '@/components/PagTitle';
 import { Table } from '@/components/Table';
-import EditButton from '@/components/ui/EditButton';
-import DeleteButton from '@/components/ui/DeleteButton';
+import EditButton from '@/components/ui/ActionButtons/EditButton';
+import DeleteButton from '@/components/ui/ActionButtons/DeleteButton';
 
 interface Props {
     categories: Pagination<Category>;

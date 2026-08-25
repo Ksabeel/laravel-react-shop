@@ -1,6 +1,6 @@
 import PageTitle from '@/components/PagTitle';
-import DeleteButton from '@/components/ui/DeleteButton';
-import EditButton from '@/components/ui/EditButton';
+import DeleteButton from '@/components/ui/ActionButtons/DeleteButton';
+import EditButton from '@/components/ui/ActionButtons/EditButton';
 import { Category, formatDate } from '@/types';
 import { Head } from '@inertiajs/react';
 import { ArrowLeft, Edit, Trash2 } from 'lucide-react';

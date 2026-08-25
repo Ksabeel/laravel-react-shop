@@ -6,8 +6,8 @@ import PaginationProduct from '@/components/Pagination';
 import EmptyState from '@/components/EmptyState';
 import PageTitle from '@/components/PagTitle';
 import { Table } from '@/components/Table';
-import EditButton from '@/components/ui/EditButton';
-import DeleteButton from '@/components/ui/DeleteButton';
+import EditButton from '@/components/ui/ActionButtons/EditButton';
+import DeleteButton from '@/components/ui/ActionButtons/DeleteButton';
 
 interface Props {
     products: Pagination<Product>;
@@ -65,7 +65,6 @@ export default function ProdctsIndex({ products }: Props) {
                                                 href={`/products/${product.id}/edit`}
                                             >
                                                 <Pencil className="h-4 w-4" />{' '}
-                                                Edit
                                             </EditButton>
                                             <DeleteButton
                                                 href={`/products/${product.id}`}

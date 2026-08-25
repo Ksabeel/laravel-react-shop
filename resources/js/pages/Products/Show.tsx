@@ -1,5 +1,5 @@
-import DeleteButton from '@/components/ui/DeleteButton';
-import EditButton from '@/components/ui/EditButton';
+import DeleteButton from '@/components/ui/ActionButtons/DeleteButton';
+import EditButton from '@/components/ui/ActionButtons/EditButton';
 import { Head, Link, usePage } from '@inertiajs/react';
 import { ArrowLeft, Edit, Trash2 } from 'lucide-react';
 import { formatDate, Product } from '@/types';
