@@ -1,21 +1,31 @@
 import { InputHTMLAttributes } from 'react';
+import { cn } from '@/lib/utils';
+import FormField from './FormField';
 
-interface Props extends InputHTMLAttributes<HTMLInputElement> {
+interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
     label?: string;
     error?: string;
 }
 
-export default function InputField({ label, error, ...props }: Props) {
+export default function InputField({
+    label,
+    error,
+    ...props
+}: InputFieldProps) {
     return (
-        <div className="mb-4">
-            <label className="mb-2 block text-sm font-medium">{label}</label>
-            <input
-                {...props}
-                className={`w-full rounded-md border px-3 py-2 ${
-                    error ? 'border-red-500 bg-red-50' : 'border-gray-300'
-                }`}
-            />
-            {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
-        </div>
+        <FormField label={label} error={error}>
+            {({ inputId, errorId }) => (
+                <input
+                    {...props}
+                    id={inputId}
+                    aria-invalid={!!error}
+                    aria-describedby={errorId}
+                    className={cn('w-full rounded-md border px-3 py-2', {
+                        'border-red-500 bg-red-50': error,
+                        'border-gray-300': !error,
+                    })}
+                />
+            )}
+        </FormField>
     );
 }

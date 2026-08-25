@@ -68,7 +68,7 @@ class CategoryController extends Controller
         $category->fill($request->validated());
         $category->save();
 
-        return redirect()->route('categories.index')->with('success', 'Product successfully.');
+        return redirect()->route('categories.index')->with('success', 'Category successfully.');
     }
 
     /**

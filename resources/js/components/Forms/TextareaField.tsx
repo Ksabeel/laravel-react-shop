@@ -1,21 +1,31 @@
 import { TextareaHTMLAttributes } from 'react';
+import { cn } from '@/lib/utils';
+import FormField from './FormField';
 
-interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+interface TextareaFieldProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
     label?: string;
     error?: string;
 }
 
-export default function TextareaField({ label, error, ...props }: Props) {
+export default function TextareaField({
+    label,
+    error,
+    ...props
+}: TextareaFieldProps) {
     return (
-        <div className="mb-4">
-            <label className="mb-2 block text-sm font-medium">{label}</label>
-            <textarea
-                {...props}
-                className={`w-full rounded-md border px-3 py-2 ${
-                    error ? 'border-red-500 bg-red-50' : 'border-gray-300'
-                }`}
-            />
-            {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
-        </div>
+        <FormField label={label} error={error}>
+            {({ inputId, errorId }) => (
+                <textarea
+                    {...props}
+                    id={inputId}
+                    aria-invalid={!!error}
+                    aria-describedby={errorId}
+                    className={cn('w-full rounded-md border px-3 py-2', {
+                        'border-red-500 bg-red-50': error,
+                        'border-gray-300': !error,
+                    })}
+                />
+            )}
+        </FormField>
     );
 }
