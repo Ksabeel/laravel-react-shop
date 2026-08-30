@@ -5,11 +5,11 @@ import { Category, formatDate } from '@/types';
 import { Head } from '@inertiajs/react';
 import { ArrowLeft, Edit, Trash2 } from 'lucide-react';
 
-interface Props {
+interface CategoriesShowProps {
     category: Category;
 }
 
-export default function CategoriesShow({ category }: Props) {
+export default function CategoriesShow({ category }: CategoriesShowProps) {
     // console.log(category);
     return (
         <>
@@ -35,11 +35,9 @@ export default function CategoriesShow({ category }: Props) {
                                 href={`/categories/${category.id}/edit`}
                             >
                                 <Edit className="h-4 w-4" />
-                                Edit
                             </EditButton>
                             <DeleteButton href={`/categories/${category.id}`}>
                                 <Trash2 className="h-4 w-4" />
-                                Delete
                             </DeleteButton>
                         </div>
                     </div>

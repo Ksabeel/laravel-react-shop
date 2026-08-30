@@ -1,14 +1,15 @@
 import InputField from '@/components/Forms/InputField';
 import SelectField from '@/components/Forms/SelectField';
 import TextareaField from '@/components/Forms/TextareaField';
+import { Category } from '@/types';
 import { Head, useForm } from '@inertiajs/react';
 import { toast } from 'sonner';
 
-interface Props {
-    categories: { id: number; name: string }[];
+interface ProductCreateProps {
+    categories: Pick<Category, 'id' | 'name'>[];
 }
 
-export default function ProductsCreate({ categories }: Props) {
+export default function ProductCreate({ categories }: ProductCreateProps) {
     const { data, setData, post, processing, errors } = useForm({
         name: '',
         description: '',

@@ -1,21 +1,20 @@
 import DeleteButton from '@/components/ui/ActionButtons/DeleteButton';
 import EditButton from '@/components/ui/ActionButtons/EditButton';
-import { Head, Link, usePage } from '@inertiajs/react';
+import { Head } from '@inertiajs/react';
 import { ArrowLeft, Edit, Trash2 } from 'lucide-react';
 import { formatDate, Product } from '@/types';
 import PageTitle from '@/components/PagTitle';
 
-interface Props {
+interface ProductShowProps {
     product: Product;
 }
 
-export default function ProductsShow({ product }: Props) {
-    // console.log(product);
+export default function ProductShow({ product }: ProductShowProps) {
     return (
         <>
             <Head title={product.name} />
             <div className="mx-auto max-w-2xl p-6">
-                <PageTitle heading="Products" href="/products">
+                <PageTitle heading={product.name} href="/products">
                     <ArrowLeft className="h-4 w-4" />
                     Back to Products
                 </PageTitle>

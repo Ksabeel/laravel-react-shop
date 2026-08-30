@@ -76,7 +76,6 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category): RedirectResponse
     {
-        // Category::query()->whereKey($category)->delete();
         $category->delete();
 
         return redirect()->route('categories.index')->with('success', 'Category successfully.');

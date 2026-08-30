@@ -2,12 +2,13 @@ import InputField from '@/components/Forms/InputField';
 import TextareaField from '@/components/Forms/TextareaField';
 import { Category } from '@/types';
 import { Head, useForm } from '@inertiajs/react';
+import { toast } from 'sonner';
 
-interface Props {
-    category: Category;
+interface CategoryEditProps {
+    category: Pick<Category, 'id' | 'name' | 'description'>;
 }
 
-export default function EditCategory({ category }: Props) {
+export default function CategoryEdit({ category }: CategoryEditProps) {
     const { data, setData, put, processing, errors } = useForm({
         name: category.name,
         description: category.description || '',
@@ -15,7 +16,14 @@ export default function EditCategory({ category }: Props) {
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        put(`/categories/${category.id}`);
+        put(`/categories/${category.id}`, {
+             onSuccess: () => {
+                toast.success('Category updated successfully');
+            },
+            onError: () => {
+                toast.error('Something went wrong');
+            },
+        });
     }
 
     return (

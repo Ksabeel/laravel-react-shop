@@ -1,19 +1,19 @@
 import { Head } from '@inertiajs/react';
-import type { Category } from '@/types';
-import { Pencil, Plus, Trash2 } from 'lucide-react';
-import { Pagination } from '@/types/pagination';
+import { Category, Pagination } from '@/types';
+import { Pencil, Plus, Trash2, Eye } from 'lucide-react';
 import PaginationCategory from '@/components/Pagination';
 import EmptyState from '@/components/EmptyState';
 import PageTitle from '@/components/PagTitle';
 import { Table } from '@/components/Table';
 import EditButton from '@/components/ui/ActionButtons/EditButton';
 import DeleteButton from '@/components/ui/ActionButtons/DeleteButton';
+import ViewButton from '@/components/ui/ActionButtons/ViewBuuton';
 
-interface Props {
+interface CategoriesIndexProps {
     categories: Pagination<Category>;
 }
 
-export default function CategoriesIndex({ categories }: Props) {
+export default function CategoriesIndex({ categories }: CategoriesIndexProps) {
     // console.log(categories);
 
     return (
@@ -52,17 +52,20 @@ export default function CategoriesIndex({ categories }: Props) {
                                     header: 'Actions',
                                     render: (category) => (
                                         <div className="flex gap-2">
+                                            <ViewButton
+                                                href={`/categories/${category.id}`}
+                                            >
+                                                <Eye className="h-4 w-4" />
+                                            </ViewButton>
                                             <EditButton
                                                 href={`/categories/${category.id}/edit`}
                                             >
-                                                <Pencil className="h-4 w-4" />{' '}
-                                                Edit
+                                                <Pencil className="h-4 w-4" />
                                             </EditButton>
                                             <DeleteButton
                                                 href={`/categories/${category.id}`}
                                             >
                                                 <Trash2 className="h-4 w-4" />
-                                                Delete
                                             </DeleteButton>
                                         </div>
                                     ),

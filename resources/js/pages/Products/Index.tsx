@@ -1,21 +1,19 @@
 import { Head } from '@inertiajs/react';
-import type { Product } from '@/types';
-import { Pencil, Plus, Trash2 } from 'lucide-react';
-import { Pagination } from '@/types/pagination';
+import { Eye, Pencil, Plus, Trash2 } from 'lucide-react';
+import type { Product, Pagination } from '@/types';
 import PaginationProduct from '@/components/Pagination';
 import EmptyState from '@/components/EmptyState';
 import PageTitle from '@/components/PagTitle';
 import { Table } from '@/components/Table';
 import EditButton from '@/components/ui/ActionButtons/EditButton';
 import DeleteButton from '@/components/ui/ActionButtons/DeleteButton';
+import ViewButton from '@/components/ui/ActionButtons/ViewBuuton';
 
-interface Props {
+interface ProductsIndexProps {
     products: Pagination<Product>;
 }
 
-export default function ProdctsIndex({ products }: Props) {
-    // console.log(products);
-
+export default function ProductsIndex({ products }: ProductsIndexProps) {
     return (
         <>
             <Head title="Products" />
@@ -61,6 +59,11 @@ export default function ProdctsIndex({ products }: Props) {
                                     header: 'Actions',
                                     render: (product) => (
                                         <div className="flex gap-2">
+                                            <ViewButton
+                                                href={`/products/${product.id}`}
+                                            >
+                                                <Eye className="h-4 w-4" />
+                                            </ViewButton>
                                             <EditButton
                                                 href={`/products/${product.id}/edit`}
                                             >
@@ -70,7 +73,6 @@ export default function ProdctsIndex({ products }: Props) {
                                                 href={`/products/${product.id}`}
                                             >
                                                 <Trash2 className="h-4 w-4" />
-                                                Delete
                                             </DeleteButton>
                                         </div>
                                     ),
@@ -96,6 +98,6 @@ export default function ProdctsIndex({ products }: Props) {
     );
 }
 
-ProdctsIndex.layout = {
-    breadcrumbs: [{ title: 'Products', href: '/productss' }],
+ProductsIndex.layout = {
+    breadcrumbs: [{ title: 'Products', href: '/products' }],
 };

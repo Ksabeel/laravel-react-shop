@@ -7,7 +7,7 @@ interface Props {
 }
 export default function PageTitle({ heading, href, children }: Props) {
     return (
-        <div className="mb-6 flex items-center justify-between">
+        <div className="mb-6 flex items-center justify-between gap-2">
             <h1 className="text-3xl font-bold">{heading}</h1>
 
             <Link

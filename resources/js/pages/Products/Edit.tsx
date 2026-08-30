@@ -6,12 +6,12 @@ import { Head, useForm, usePage } from '@inertiajs/react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 
-interface Props {
+interface ProductEditProps {
     product: Product;
-    categories: Category[];
+    categories: Pick<Category, 'id' | 'name'>[];
 }
 
-export default function EditProduct({ product, categories }: Props) {
+export default function ProductEdit({ product, categories }: ProductEditProps) {
     const { data, setData, put, processing, errors } = useForm({
         name: product.name,
         description: product.description || '',
@@ -121,6 +121,14 @@ export default function EditProduct({ product, categories }: Props) {
                         >
                             Cancel
                         </a>
+                        <div className="flex items-center">
+                            <a
+                                href={`/products/${product.id}/variants/create`}
+                                className="rounded-md bg-green-600 px-6 py-2 text-white hover:bg-green-700"
+                            >
+                                Add Variants
+                            </a>
+                        </div>
                     </div>
                 </form>
             </div>
