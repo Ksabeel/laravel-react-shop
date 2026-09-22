@@ -17,7 +17,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Categories/Index', [
+        return Inertia::render('Admin/Categories/Index', [
             'categories' => Category::latest()->paginate(5),
         ]);
     }
@@ -27,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Categories/Create');
+        return Inertia::render('Admin/Categories/Create');
     }
 
     /**
@@ -37,7 +37,7 @@ class CategoryController extends Controller
     {
         Category::create($request->validated());
 
-        return redirect()->route('categories.index')->with('success', 'Category successfully.');
+        return redirect()->route('admin.categories.index')->with('success', 'Category successfully.');
     }
 
     /**
@@ -45,7 +45,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return Inertia::render('Categories/Show', [
+        return Inertia::render('Admin/Categories/Show', [
             'category' => $category,
         ]);
     }
@@ -55,7 +55,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return Inertia::render('Categories/Edit', [
+        return Inertia::render('Admin/Categories/Edit', [
             'category' => $category,
         ]);
     }
@@ -68,7 +68,7 @@ class CategoryController extends Controller
         $category->fill($request->validated());
         $category->save();
 
-        return redirect()->route('categories.index')->with('success', 'Category successfully.');
+        return redirect()->route('admin.categories.index')->with('success', 'Category successfully.');
     }
 
     /**
@@ -78,6 +78,6 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return redirect()->route('categories.index')->with('success', 'Category successfully.');
+        return redirect()->route('admin.categories.index')->with('success', 'Category successfully.');
     }
 }

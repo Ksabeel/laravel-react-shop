@@ -17,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Products/Index', [
+        return Inertia::render('Admin/Products/Index', [
             'products' => Product::with('category')->latest()->paginate(10),
         ]);
     }
@@ -27,7 +27,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Products/Create', [
+        return Inertia::render('Admin/Products/Create', [
             'categories' => Category::select(['id', 'name'])->get(),
         ]);
     }
@@ -39,7 +39,7 @@ class ProductController extends Controller
     {
         Product::create($request->validated());
 
-        return redirect()->route('products.index')->with('success', 'Product successfully.');
+        return redirect()->route('admin.products.index')->with('success', 'Product successfully.');
     }
 
     /**
@@ -47,7 +47,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return Inertia::render('Products/Show', [
+        return Inertia::render('Admin/Products/Show', [
             'product' => $product,
         ]);
     }
@@ -57,7 +57,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return Inertia::render('Products/Edit', [
+        return Inertia::render('Admin/Products/Edit', [
             'product' => $product,
             'categories' => Category::select(['id', 'name'])->get(),
         ]);
@@ -70,7 +70,7 @@ class ProductController extends Controller
     {
         $product->update($request->validated());
 
-        return redirect()->route('products.index')->with('success', 'Product successfully.');
+        return redirect()->route('admin.products.index')->with('success', 'Product successfully.');
     }
 
     /**
@@ -80,6 +80,6 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return redirect()->route('products.index')->with('success', 'Product successfully.');
+        return redirect()->route('admin.products.index')->with('success', 'Product successfully.');
     }
 }

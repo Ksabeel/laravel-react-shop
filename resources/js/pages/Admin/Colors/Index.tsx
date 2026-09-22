@@ -13,8 +13,6 @@ interface ColorsIndexProps {
 }
 
 export default function ColorsIndex({ colors }: ColorsIndexProps) {
-    console.log(colors);
-
     return (
         <>
             <Head title="Colors" />

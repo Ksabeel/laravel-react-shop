@@ -21,7 +21,7 @@ class ProductVariantsController extends Controller
      */
     public function create(Product $product)
     {
-        return Inertia::render('ProductVariants/Create', [
+        return Inertia::render('Admin/ProductVariants/Create', [
             'product' => $product,
             'sizes' => Size::cases(),
             'colors' => Color::select('id', 'name')->get(),
@@ -54,6 +54,6 @@ class ProductVariantsController extends Controller
             ...$validated,
         ]);
 
-        return redirect()->route('products.show', $product)->with('success', 'Variant successfully added.');
+        return redirect()->route('admin.products.show', $product)->with('success', 'Variant successfully added.');
     }
 }

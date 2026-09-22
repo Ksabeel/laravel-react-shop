@@ -16,7 +16,7 @@ class ColorController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Colors/Index', [
+        return Inertia::render('Admin/Colors/Index', [
             'colors' => Color::latest()->paginate(5),
         ]);
     }
@@ -26,7 +26,7 @@ class ColorController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Colors/Create');
+        return Inertia::render('Admin/Colors/Create');
     }
 
     /**
@@ -49,7 +49,7 @@ class ColorController extends Controller
      */
     public function show(Color $color)
     {
-        return Inertia::render('Colors/Show', [
+        return Inertia::render('Admin/Colors/Show', [
             'color' => $color,
         ]);
     }
@@ -59,7 +59,7 @@ class ColorController extends Controller
      */
     public function edit(Color $color)
     {
-        return Inertia::render('Colors/Edit', [
+        return Inertia::render('Admin/Colors/Edit', [
             'color' => $color,
         ]);
     }
@@ -76,7 +76,7 @@ class ColorController extends Controller
 
         $color->update($request->only(['name', 'hex']));
 
-        return redirect()->route('colors.index')->with('success', 'Color updated successfully.');
+        return redirect()->route('admin.colors.index')->with('success', 'Color updated successfully.');
     }
 
     /**
@@ -86,6 +86,6 @@ class ColorController extends Controller
     {
         $color->delete();
 
-        return redirect()->route('colors.index')->with('success', 'Color deleted successfully.');
+        return redirect()->route('admin.colors.index')->with('success', 'Color deleted successfully.');
     }
 }

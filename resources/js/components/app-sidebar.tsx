@@ -18,7 +18,7 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { dashboard } from '@/routes';
+import { dashboard } from '@/routes/admin';
 import type { NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
@@ -29,17 +29,17 @@ const mainNavItems: NavItem[] = [
     },
     {
         title: 'Categories',
-        href: '/categories',
+        href: '/admin/categories',
         icon: LayoutGrid,
     },
     {
         title: 'Colors',
-        href: '/colors',
+        href: '/admin/colors',
         icon: LayoutGrid,
     },
     {
         title: 'Products',
-        href: '/products',
+        href: '/admin/products',
         icon: LayoutGrid,
     },
 ];
