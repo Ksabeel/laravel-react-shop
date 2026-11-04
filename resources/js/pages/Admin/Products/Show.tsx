@@ -14,7 +14,7 @@ export default function ProductShow({ product }: ProductShowProps) {
         <>
             <Head title={product.name} />
             <div className="mx-auto max-w-2xl p-6">
-                <PageTitle heading={product.name} href="/products">
+                <PageTitle heading={product.name} href="/admin/products">
                     <ArrowLeft className="h-4 w-4" />
                     Back to Products
                 </PageTitle>
@@ -29,11 +29,11 @@ export default function ProductShow({ product }: ProductShowProps) {
                             </p>
                         </div>
                         <div className="flex gap-2">
-                            <EditButton href={`/products/${product.id}/edit`}>
+                            <EditButton href={`/admin/products/${product.id}/edit`}>
                                 <Edit className="h-4 w-4" />
                                 Edit
                             </EditButton>
-                            <DeleteButton href={`/products/${product.id}`}>
+                            <DeleteButton href={`/admin/products/${product.id}`}>
                                 <Trash2 className="h-4 w-4" />
                                 Delete
                             </DeleteButton>

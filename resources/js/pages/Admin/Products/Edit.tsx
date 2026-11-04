@@ -25,11 +25,11 @@ export default function ProductEdit({ product, categories }: ProductEditProps) {
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        put(`/products/${product.id}`);
+        put(`/admin/products/${product.id}`);
     }
 
     function uploadImage() {
-        imageForm.post(`/products/${product.id}/image`, {
+        imageForm.post(`/admin/products/${product.id}/image`, {
             onSuccess: () => {
                 toast.success('Image uploaded successfully');
             },
@@ -113,17 +113,17 @@ export default function ProductEdit({ product, categories }: ProductEditProps) {
                             disabled={processing}
                             className="rounded-md bg-blue-600 px-6 py-2 text-white hover:bg-blue-700 disabled:opacity-50"
                         >
-                            {processing ? 'Updating...' : 'Update Category'}
+                            {processing ? 'Updating...' : 'Update Product'}
                         </button>
                         <a
-                            href="/products"
+                            href="/admin/products"
                             className="rounded-md border border-gray-300 px-6 py-2 text-gray-700 hover:bg-gray-50"
                         >
                             Cancel
                         </a>
                         <div className="flex items-center">
                             <a
-                                href={`/products/${product.id}/variants/create`}
+                                href={`/admin/products/${product.id}/variants/create`}
                                 className="rounded-md bg-green-600 px-6 py-2 text-white hover:bg-green-700"
                             >
                                 Add Variants

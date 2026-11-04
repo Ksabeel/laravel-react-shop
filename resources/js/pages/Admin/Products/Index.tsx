@@ -18,7 +18,7 @@ export default function ProductsIndex({ products }: ProductsIndexProps) {
         <>
             <Head title="Products" />
             <div className="p-6">
-                <PageTitle heading="Products" href="/products/create">
+                <PageTitle heading="Products" href="/admin/products/create">
                     <Plus className="h-4 w-4" />
                     Add Products
                 </PageTitle>
@@ -60,17 +60,17 @@ export default function ProductsIndex({ products }: ProductsIndexProps) {
                                     render: (product) => (
                                         <div className="flex gap-2">
                                             <ViewButton
-                                                href={`/products/${product.id}`}
+                                                href={`/admin/products/${product.id}`}
                                             >
                                                 <Eye className="h-4 w-4" />
                                             </ViewButton>
                                             <EditButton
-                                                href={`/products/${product.id}/edit`}
+                                                href={`/admin/products/${product.id}/edit`}
                                             >
                                                 <Pencil className="h-4 w-4" />{' '}
                                             </EditButton>
                                             <DeleteButton
-                                                href={`/products/${product.id}`}
+                                                href={`/admin/products/${product.id}`}
                                             >
                                                 <Trash2 className="h-4 w-4" />
                                             </DeleteButton>
@@ -87,7 +87,7 @@ export default function ProductsIndex({ products }: ProductsIndexProps) {
                 ) : (
                     <EmptyState
                         description="No prodcuts yet"
-                        href="/products/create"
+                        href="/admin/products/create"
                     >
                         <Plus className="h-4 w-4" />
                         Add Product
@@ -99,5 +99,5 @@ export default function ProductsIndex({ products }: ProductsIndexProps) {
 }
 
 ProductsIndex.layout = {
-    breadcrumbs: [{ title: 'Products', href: '/products' }],
+    breadcrumbs: [{ title: 'Products', href: '/admin/products' }],
 };

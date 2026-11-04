@@ -15,7 +15,7 @@ export default function ColorsEdit({ color }: ColorsEditProps) {
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        put(`/colors/${color.id}`, {
+        put(`/admin/colors/${color.id}`, {
             onSuccess: () => {
                 toast.success('Color updated successfully');
             },
@@ -63,7 +63,7 @@ export default function ColorsEdit({ color }: ColorsEditProps) {
                             {processing ? 'Updating...' : 'Update Color'}
                         </button>
                         <a
-                            href="/colors"
+                            href="/admin/colors"
                             className="rounded-md border border-gray-300 px-6 py-2 text-gray-700 hover:bg-gray-50"
                         >
                             Cancel

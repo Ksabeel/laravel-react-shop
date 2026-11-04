@@ -17,7 +17,7 @@ export default function ColorsIndex({ colors }: ColorsIndexProps) {
         <>
             <Head title="Colors" />
             <div className="p-6">
-                <PageTitle heading="Colors" href="/colors/create">
+                <PageTitle heading="Colors" href="/admin/colors/create">
                     <Plus className="h-4 w-4" />
                     Add Color
                 </PageTitle>
@@ -44,12 +44,12 @@ export default function ColorsIndex({ colors }: ColorsIndexProps) {
                                     render: (color) => (
                                         <div className="flex gap-2">
                                             <EditButton
-                                                href={`/colors/${color.id}/edit`}
+                                                href={`/admin/colors/${color.id}/edit`}
                                             >
                                                 <Pencil className="h-4 w-4" />
                                             </EditButton>
                                             <DeleteButton
-                                                href={`/colors/${color.id}`}
+                                                href={`/admin/colors/${color.id}`}
                                             >
                                                 <Trash2 className="h-4 w-4" />
                                             </DeleteButton>
@@ -78,5 +78,5 @@ export default function ColorsIndex({ colors }: ColorsIndexProps) {
 }
 
 ColorsIndex.layout = {
-    breadcrumbs: [{ title: 'Colors', href: '/colors' }],
+    breadcrumbs: [{ title: 'Colors', href: '/admin/colors' }],
 };

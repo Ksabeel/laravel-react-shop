@@ -20,7 +20,7 @@ export default function CategoriesIndex({ categories }: CategoriesIndexProps) {
         <>
             <Head title="Categories" />
             <div className="p-6">
-                <PageTitle heading="Categories" href="/categories/create">
+                <PageTitle heading="Categories" href="/admin/categories/create">
                     <Plus className="h-4 w-4" />
                     Add Category
                 </PageTitle>
@@ -53,17 +53,17 @@ export default function CategoriesIndex({ categories }: CategoriesIndexProps) {
                                     render: (category) => (
                                         <div className="flex gap-2">
                                             <ViewButton
-                                                href={`/categories/${category.id}`}
+                                                href={`/admin/categories/${category.id}`}
                                             >
                                                 <Eye className="h-4 w-4" />
                                             </ViewButton>
                                             <EditButton
-                                                href={`/categories/${category.id}/edit`}
+                                                href={`/admin/categories/${category.id}/edit`}
                                             >
                                                 <Pencil className="h-4 w-4" />
                                             </EditButton>
                                             <DeleteButton
-                                                href={`/categories/${category.id}`}
+                                                href={`/admin/categories/${category.id}`}
                                             >
                                                 <Trash2 className="h-4 w-4" />
                                             </DeleteButton>
@@ -80,7 +80,7 @@ export default function CategoriesIndex({ categories }: CategoriesIndexProps) {
                 ) : (
                     <EmptyState
                         description="No categories yet"
-                        href="/categories/create"
+                        href="/admin/categories/create"
                     >
                         <Plus className="h-4 w-4" />
                         Add Category
@@ -92,5 +92,5 @@ export default function CategoriesIndex({ categories }: CategoriesIndexProps) {
 }
 
 CategoriesIndex.layout = {
-    breadcrumbs: [{ title: 'Categories', href: '/categories' }],
+    breadcrumbs: [{ title: 'Categories', href: '/admin/categories' }],
 };

@@ -24,7 +24,7 @@ export default function VariantCreate({
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        post(`/products/${product.id}/variants`, {
+        post(`/admin/products/${product.id}/variants`, {
             onSuccess: () => {
                 toast.success('Variant created successfully');
             },
@@ -112,7 +112,7 @@ export default function VariantCreate({
                             {processing ? 'Creating...' : 'Create Variant'}
                         </button>
                         <a
-                            href={`/products/${product.id}/variants`}
+                            href={`/admin/products/${product.id}/variants`}
                             className="rounded-md border border-gray-300 px-6 py-2 text-gray-700 hover:bg-gray-50"
                         >
                             Cancel

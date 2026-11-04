@@ -11,7 +11,7 @@ export default function CategoryCreate() {
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        post('/categories', {
+        post('/admin/categories', {
             onSuccess: () => {
                 toast.success('Category created successfully');
             },
@@ -60,7 +60,7 @@ export default function CategoryCreate() {
                             {processing ? 'Creating...' : 'Create Category'}
                         </button>
                         <a
-                            href="/categories"
+                            href="/admin/categories"
                             className="rounded-md border border-gray-300 px-6 py-2 text-gray-700 hover:bg-gray-50"
                         >
                             Cancel

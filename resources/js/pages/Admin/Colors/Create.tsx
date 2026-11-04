@@ -10,7 +10,7 @@ export default function ColorsCreate() {
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        post('/colors', {
+        post('/admin/colors', {
             onSuccess: () => {
                 toast.success('Color created successfully');
             },
@@ -58,7 +58,7 @@ export default function ColorsCreate() {
                             {processing ? 'Creating...' : 'Create Color'}
                         </button>
                         <a
-                            href="/colors"
+                            href="/admin/colors"
                             className="rounded-md border border-gray-300 px-6 py-2 text-gray-700 hover:bg-gray-50"
                         >
                             Cancel

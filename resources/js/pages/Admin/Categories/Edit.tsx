@@ -16,7 +16,7 @@ export default function CategoryEdit({ category }: CategoryEditProps) {
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        put(`/categories/${category.id}`, {
+        put(`/admin/categories/${category.id}`, {
              onSuccess: () => {
                 toast.success('Category updated successfully');
             },
@@ -64,7 +64,7 @@ export default function CategoryEdit({ category }: CategoryEditProps) {
                             {processing ? 'Updating...' : 'Update Category'}
                         </button>
                         <a
-                            href="/categories"
+                            href="/admin/categories"
                             className="rounded-md border border-gray-300 px-6 py-2 text-gray-700 hover:bg-gray-50"
                         >
                             Cancel

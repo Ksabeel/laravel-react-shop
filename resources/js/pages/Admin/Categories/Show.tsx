@@ -15,7 +15,7 @@ export default function CategoriesShow({ category }: CategoriesShowProps) {
         <>
             <Head title={category.name} />
             <div className="mx-auto max-w-2xl p-6">
-                <PageTitle heading={category.name} href="/categories">
+                <PageTitle heading={category.name} href="/admin/categories">
                     <ArrowLeft className="h-4 w-4" />
                     Back to Categories
                 </PageTitle>
@@ -32,11 +32,11 @@ export default function CategoriesShow({ category }: CategoriesShowProps) {
                         </div>
                         <div className="flex gap-2">
                             <EditButton
-                                href={`/categories/${category.id}/edit`}
+                                href={`/admin/categories/${category.id}/edit`}
                             >
                                 <Edit className="h-4 w-4" />
                             </EditButton>
-                            <DeleteButton href={`/categories/${category.id}`}>
+                            <DeleteButton href={`/admin/categories/${category.id}`}>
                                 <Trash2 className="h-4 w-4" />
                             </DeleteButton>
                         </div>

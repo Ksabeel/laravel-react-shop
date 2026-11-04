@@ -19,7 +19,7 @@ export default function ProductCreate({ categories }: ProductCreateProps) {
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        post('/products', {
+        post('/admin/products', {
             onSuccess: () => {
                 toast.success('Product created successfully');
             },
@@ -89,7 +89,7 @@ export default function ProductCreate({ categories }: ProductCreateProps) {
                             {processing ? 'Creating...' : 'Create Product'}
                         </button>
                         <a
-                            href="/products"
+                            href="/admin/products"
                             className="rounded-md border border-gray-300 px-6 py-2 text-gray-700 hover:bg-gray-50"
                         >
                             Cancel
